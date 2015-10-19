@@ -1,0 +1,21 @@
+{
+  "name": "jquery-modlafly",
+  "homepage": "https://github.com/fater/jquery-modalfly",
+  "authors": [
+		"'Chaikin Evgenii <'fat_hack@rambler.ru'>"
+  ],
+	"description": "JQuery Modalfly Module",
+  "main": "jquery.modalfly.js",
+  "moduleType": [],
+  "keywords": [
+		"modalfly"
+  ],
+  "license": "CC",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

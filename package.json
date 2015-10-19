@@ -1,0 +1,18 @@
+{
+  "name": "jquery-modalfly",
+  "version": "2.1.0",
+	"description": "JQuery Modalfly модуль",
+  "main": "jquery.modalfly.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "modalfly"
+  ],
+  "author": "Chaikin Evgenii",
+  "license": "ISC",
+	"repository": {
+    "type": "git",
+    "url": "git+https://github.com/fater/jquery-modalfly.git"
+  },
+}
