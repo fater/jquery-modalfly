@@ -29,7 +29,7 @@ if ($_POST['action'] == 'get_form')
 	';
 
 	// Отображаем кнопку сохранить и меняем заголовок
-	$json['button'] = 'Save custom name';
+	$json['button_save'] = 'Save custom name';
 
 	// Прикрепляем к форме параметры, котоыре при нажатии на кнопку сохранить, будут отправлены на сервер
 	$json['param'] = array
@@ -38,10 +38,9 @@ if ($_POST['action'] == 'get_form')
 		'id' => $_POST['id']
 	);
 
-	// Отображается кнопка Закрыть
+	// Отображается кнопка Закрыть и меняем заголовок
+//	$json['button_close'] = 'Custom close title';
 	$json['button_close'] = true;
-	// Изменяем название кнопки Закрыть
-	$json['button_close_text'] = 'Custom close title';
 }
 elseif ($_POST['action'] == 'add_category')
 {

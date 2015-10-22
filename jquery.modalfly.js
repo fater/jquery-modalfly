@@ -1,6 +1,6 @@
 /*
  * Module: JQuery ModalFly Plugin
- * Version: 2.2.1
+ * Version: 2.3.0
  * Author: Chaikin Evgenii
  * Release date: 26 Feb 2015
  * Updated: 22 Oct 2015
@@ -60,41 +60,42 @@
 			// Задается отображение кнопки закрыть и текста на ней
 			if (options.button_close)
 			{
-				$ ('#' + opt.object_name_form + ' button[data-object="module_modalfly_close_button"]').show (0);
-				if (options.button_close_text)
-				{
-					$ ('#' + opt.object_name_form + ' button[data-object="module_modalfly_close_button"]').html (options.button_close_text);
-				}
+				$ ('#' + opt.object_name_form + ' button[data-object="module_modalfly_close_button"]')
+						.html (typeof options.button_close == 'string' ? options.button_close : opt.lang_close)
+						.show (0);
 			}
 			else
 			{
 				$ ('#' + opt.object_name_form + ' button[data-object="module_modalfly_close_button"]')
-						.html (opt.lang_close)
 						.hide (0);
 			}
 
 			// Определяем новый широкий стиль для модального окна
 			if (options.size_wide)
 			{
-				$ ('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]').addClass ('modal-lg');
+				$ ('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]')
+						.addClass ('modal-lg');
 			}
 			else if ($ ('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]').hasClass ('modal-lg'))
 			{
-				$ ('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]').removeClass ('modal-lg');
+				$ ('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]')
+						.removeClass ('modal-lg');
 			}
 
 			// Определяем новый узкий стиль для модального окна
 			if (options.size_small)
 			{
-				$ ('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]').addClass ('modal-sm');
+				$ ('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]')
+						.addClass ('modal-sm');
 			}
 			else if ($ ('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]').hasClass ('modal-sm'))
 			{
-				$ ('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]').removeClass ('modal-sm');
+				$ ('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]')
+						.removeClass ('modal-sm');
 			}
 
 			// Отображение кнопок
-			if (options.button || options.param)
+			if (options.button_save || options.param)
 			{
 				$ ('#' + opt.object_name_form + ' div[class="modal-footer"]').show (0);
 				// Задаем цвет кнопки, согласно стилям bootstrap
@@ -112,15 +113,16 @@
 				}
 
 				// Показываем кнопку
-				if (options.button)
+				if (options.button_save)
 				{
 					$ ('#' + opt.object_name_form + ' [data-object="modalfly_save"]')
-							.html (options.button);
+							.html (typeof options.button_save == 'string' ? options.button_save : opt.lang_save)
+							.show ();
 				}
 				else
 				{
 					$ ('#' + opt.object_name_form + ' [data-object="modalfly_save"]')
-							.html ('Сохранить');
+							.hide ();
 				}
 
 				// Накладываем на кнопку параметры
@@ -151,9 +153,11 @@
 					$ ('#' + opt.object_name_form + ' div[class="modal-footer"]').hide (0);
 				}
 			}
-
 			// Находим атрибут "autofocus" в полях формы и ставим на него курсор
-			$ ('#' + opt.object_name_form).on ('shown.bs.modal', function ()
+			$ ('#' + opt.object_name_form).on ('show.bs.modal', function ()
+			{
+				$ (this).find ("[autofocus]:first").focus ();
+			}).on ('shown.bs.modal', function ()
 			{
 				$ (this).find ("[autofocus]:first").focus ();
 			});
@@ -302,10 +306,14 @@ $ (window).load (function ()
 
 	$ (document).on ('click', 'button[data-object="modalfly_save"]', function ()
 	{
-		if ($ (this).attr ('data-param').length)
+		if ($ (this).is (':visible'))
+		//if ($ (this).attr ('data-param').length)
 		{
-			var opt = {};
-			opt.param = $.parseJSON ($ (this).attr ('data-param'));
+			var opt = {param: {}};
+			if ($ (this).attr ('data-param').length)
+			{
+				opt.param = $.parseJSON ($ (this).attr ('data-param'));
+			}
 
 			$ ('div[class="modal-body"] [data-object="fld"]').each (function (i, e)
 			{

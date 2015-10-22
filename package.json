@@ -1,6 +1,6 @@
 {
   "name": "jquery-modalfly",
-  "version": "2.2.1",
+  "version": "2.3.0",
 	"description": "JQuery Modalfly Plugin",
   "main": "jquery.modalfly.js",
   "scripts": {
