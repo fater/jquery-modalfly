@@ -1,7 +1,7 @@
 {
   "name": "jquery-modalfly",
-  "version": "2.1.0",
-	"description": "JQuery Modalfly модуль",
+  "version": "2.2.0",
+	"description": "JQuery Modalfly Module",
   "main": "jquery.modalfly.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,5 +14,5 @@
 	"repository": {
     "type": "git",
     "url": "git+https://github.com/fater/jquery-modalfly.git"
-  },
+  }
 }

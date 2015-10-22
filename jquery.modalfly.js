@@ -1,10 +1,11 @@
 /*
-* Module: Modal window
-* Version: 2.2
-* Author: Fater Media Group
-* Release date: 26 Feb 2015
-* Updated: 26 Mar 2015
-* */
+ * Module: JQuery ModalFly (Modal Window Plugin)
+ * Version: 2.2
+ * Author: Chaikin Evgenii
+ * Release date: 26 Feb 2015
+ * Updated: 22 Oct 2015
+ * Site: http://www.fater.ru
+ * */
 
 
 (function ($)
@@ -17,23 +18,38 @@
 		object_name_form: 'module_modalfly_form',
 
 		// Run custom script when modal is closed
-		jsa: ''
+		jsa: '',
+		// Default values
+		url: 'api/',
+		lang_close: 'Закрыть',
+		lang_save: 'Сохранить'
 	};
 
 	$.modalfly = function (action, options)
 	{
-		// Show form
-		if (action == 'show')
+		if (action == 'options')
 		{
-			// First time create an elements
+			// Set default values
+
+			$.extend (opt, options);
+		}
+		else if (action == 'show')
+		{
+			// Show form
+
+			// First time create an element
 			if (!opt.template_loaded)
 			{
 				opt.template_loaded = true;
 
-				$ ('body').prepend ('<div class="modal fade" id="' + opt.object_name_form + '"><div data-object="modalfly_dialog" class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title"></h4></div><div class="modal-body"></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal" data-object="module_modalfly_close_button">Закрыть</button><button type="button" class="btn btn-primary" data-object="modalfly_save" data-param="">Сохранить</button></div></div></div></div>');
+				$ ('body').prepend ('<div class="modal fade" id="' + opt.object_name_form + '"><div data-object="modalfly_dialog" class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title"></h4></div><div class="modal-body"></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal" data-object="module_modalfly_close_button" autofocus>' + opt.lang_close + '</button><button type="button" class="btn btn-primary" data-object="modalfly_save" data-param="" autofocus>' + opt.lang_save + '</button></div></div></div></div>');
 			}
 
-			if (!options.title)
+			if (typeof options == 'string')
+			{
+				options = {content: options};
+			}
+			else if (!options.title)
 			{
 				options.title = '';
 			}
@@ -41,6 +57,7 @@
 			$ ('#' + opt.object_name_form + ' h4[class=modal-title]').html (options.title);
 			$ ('#' + opt.object_name_form + ' div[class=modal-body]').html (options.content);
 
+			// Задается отображение кнопки закрыть и текста на ней
 			if (options.button_close)
 			{
 				$ ('#' + opt.object_name_form + ' button[data-object="module_modalfly_close_button"]').show (0);
@@ -51,9 +68,12 @@
 			}
 			else
 			{
-				$ ('#' + opt.object_name_form + ' button[data-object="module_modalfly_close_button"]').hide (0);
+				$ ('#' + opt.object_name_form + ' button[data-object="module_modalfly_close_button"]')
+						.html (opt.lang_close)
+						.hide (0);
 			}
 
+			// Определяем новый широкий стиль для модального окна
 			if (options.size_wide)
 			{
 				$ ('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]').addClass ('modal-lg');
@@ -63,6 +83,7 @@
 				$ ('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]').removeClass ('modal-lg');
 			}
 
+			// Определяем новый узкий стиль для модального окна
 			if (options.size_small)
 			{
 				$ ('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]').addClass ('modal-sm');
@@ -72,38 +93,55 @@
 				$ ('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]').removeClass ('modal-sm');
 			}
 
+			// Отображение кнопок
 			if (options.button || options.param)
 			{
 				$ ('#' + opt.object_name_form + ' div[class="modal-footer"]').show (0);
+				// Задаем цвет кнопки, согласно стилям bootstrap
 				if (options.button_color)
 				{
-					$ ('#' + opt.object_name_form + ' [data-object="modalfly_save"]').removeClass ('btn-primary').addClass (options.button_color);
+					$ ('#' + opt.object_name_form + ' [data-object="modalfly_save"]')
+							.removeClass ('btn-primary')
+							.addClass (options.button_color);
 				}
 				else
 				{
-					$ ('#' + opt.object_name_form + ' [data-object="modalfly_save"]').removeClass ().addClass ('btn btn-primary');
+					$ ('#' + opt.object_name_form + ' [data-object="modalfly_save"]')
+							.removeClass ()
+							.addClass ('btn btn-primary');
 				}
 
+				// Показываем кнопку
 				if (options.button)
 				{
-					$ ('#' + opt.object_name_form + ' [data-object="modalfly_save"]').html (options.button);
+					$ ('#' + opt.object_name_form + ' [data-object="modalfly_save"]')
+							.html (options.button);
 				}
 				else
 				{
-					$ ('#' + opt.object_name_form + ' [data-object="modalfly_save"]').html ('Сохранить');
+					$ ('#' + opt.object_name_form + ' [data-object="modalfly_save"]')
+							.html ('Сохранить');
 				}
 
+				// Накладываем на кнопку параметры
 				if (options.param)
 				{
-					$ ('#' + opt.object_name_form + ' [data-object="modalfly_save"]').attr ('data-param', options.param);
+					if (typeof options.param == 'object')
+					{
+						options.param = JSON.stringify (options.param);
+					}
+					$ ('#' + opt.object_name_form + ' [data-object="modalfly_save"]')
+							.attr ('data-param', options.param);
 				}
 				else
 				{
-					$ ('#' + opt.object_name_form + ' [data-object="modalfly_save"]').attr ('data-param', '');
+					$ ('#' + opt.object_name_form + ' [data-object="modalfly_save"]')
+							.attr ('data-param', '');
 				}
 			}
 			else
 			{
+				// Если отображается только кнопка закрыть, то отображаем панель с одной кнопкой
 				if (options.button_close)
 				{
 					$ ('#' + opt.object_name_form + '  [data-object="modalfly_save"]').hide (0);
@@ -114,20 +152,24 @@
 				}
 			}
 
+			// Находим атрибут "autofocus" в полях формы и ставим на него курсор
 			$ ('#' + opt.object_name_form).on ('shown.bs.modal', function ()
 			{
 				$ (this).find ("[autofocus]:first").focus ();
 			});
 
+			// Отображение формы средствами Bootstrap
 			$ ('#' + opt.object_name_form).modal ('show');
+			// После ответа от сервера парсим полученные значения
 			$.modalfly ('check_actions', 'modal_load');
 		}
-		// Ajax load form
 		else if (action == 'load')
 		{
+			// Отправка данных на сервер, ответ сервера отображается в модальном окне
+
 			$.modalfly ('show_loading');
 			$.ajax ({
-				url: options.url,
+				url: options.url ? options.url : opt.url,
 				type: 'POST',
 				dataType: 'json',
 				data: options.param,
@@ -138,15 +180,20 @@
 					{
 						$.modalfly ('show', callback);
 					}
+				},
+				complete: function ()
+				{
+					$.modalfly ('close_loading');
 				}
 			});
 		}
-		// Ajax request
 		else if (action == 'request')
 		{
+			// Отправка данных на сервер, ответ сервера отображается в модальном окне, полученныы JS код выполняется
+
 			$.modalfly ('show_loading');
 			$.ajax ({
-				url: options.url,
+				url: options.url ? options.url : opt.url,
 				type: 'POST',
 				dataType: 'json',
 				data: options.param,
@@ -165,29 +212,37 @@
 					{
 						opt.jsa = callback.jsa;
 					}
+				},
+				complete: function ()
+				{
+					$.modalfly ('close_loading');
 				}
 			});
 		}
-		// Show loading icon
 		else if (action == 'show_loading')
 		{
+			// Отображение иконки загрузки
+
 			if (!opt.overflow_loading)
 			{
 				opt.overflow_loading = true;
 				$ ('body').prepend ('<div id="' + opt.object_name_loading + '"></div>');
 			}
 			$ ('#' + opt.object_name_loading)
-				.css ({marginTop: '-10px'})
-				.animate ({opacity: 'show', marginTop: 0}, 'fast');
+					.css ({marginTop: '-10px'})
+					.animate ({opacity: 'show', marginTop: 0}, 'fast');
 		}
-		// Hide loading icon
 		else if (action == 'close_loading')
 		{
+			// Скрытие иконки загрузки
+
 			$ ('#' + opt.object_name_loading)
-				.animate ({opacity: 'hide', marginTop: '-10px'}, 'fast');
+					.animate ({opacity: 'hide', marginTop: '-10px'}, 'fast');
 		}
 		else if (action == 'check_actions')
 		{
+			// Полученный в форму HTML код проверяется и добавляются триггеры
+
 			$('#' + opt.object_name_form + ' [data-trigger="enter"]').on ('keypress', function (event)
 			{
 				if(event.which === 13)
@@ -221,10 +276,6 @@
 				{
 					opt.url = $ (this).attr ('data-url');
 				}
-				else
-				{
-					opt.url = '/api';
-				}
 				$ (this).on ('click',function ()
 				{
 					$.modalfly ('request', opt);
@@ -233,6 +284,7 @@
 		}
 	};
 
+	// Выполнить загруженный JS код при закрытии окна
 	$ (document).on ('hide.bs.modal','#' + opt.object_name_form, function ()
 	{
 		if (opt.jsa != '')
@@ -257,11 +309,7 @@ $ (window).load (function ()
 
 			$ ('div[class="modal-body"] [data-object="fld"]').each (function (i, e)
 			{
-				if
-				(
-						$ (this).attr ('type') == 'checkbox' && !$ (this).is (':checked') ||
-						$ (this).attr ('type') == 'radio' && !$ (this).is (':checked')
-				)
+				if ($ (this).attr ('type') == 'checkbox' && !$ (this).is (':checked') || $ (this).attr ('type') == 'radio' && !$ (this).is (':checked'))
 				{
 					return;
 				}
@@ -276,10 +324,6 @@ $ (window).load (function ()
 			{
 				opt.url = opt.param.url;
 				delete opt.param.url;
-			}
-			else
-			{
-				opt.url = '/api';
 			}
 			$.modalfly ('request', opt);
 		}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>JQuery Modalfly Plugin Example</title>
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<!--<script src="http://kesip.dev/media/bower/jquery/dist/jquery.js"></script>-->
+	<script src="../jquery.modalfly.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="example.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="../jquery.modalfly.css" />
+</head>
+<body>
+
+<script>
+	$.modalfly ('options', {url: '.', lang_close: 'Close+', lang_save: 'Save-'});
+</script>
+
+<div class="container">
+	<h3>Пример 1</h3>
+	<div class="row">
+		<div class="col-md-2">
+			<a href="javascript:;" data-action="modalfly_example" class="btn btn-primary">Выполнить код</a>
+		</div>
+		<div class="col-md-10">
+			Показать модальное окно, задав параметры через функцию.
+		</div>
+	</div>
+
+
+	<h3>Пример 2</h3>
+	<div class="row">
+		<div class="col-md-2">
+			<a href="javascript:;" data-module="modalfly" data-action="get_form" data-param="value" data-id="7" class="btn btn-primary">Выполнить код</a>
+		</div>
+		<div class="col-md-10">
+			При нажатии на ссылку модуль обращается к серверу с заданными параметрами и возвращает ответ.
+		</div>
+	</div>
+
+</div>
+
+</body>
+</html>
