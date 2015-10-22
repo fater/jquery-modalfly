@@ -1,10 +1,11 @@
 /*
  * Module: JQuery ModalFly Plugin
- * Version: 2.3.0
+ * Version: 2.4.0
  * Author: Chaikin Evgenii
  * Release date: 26 Feb 2015
- * Updated: 22 Oct 2015
+ * Updated: 23 Oct 2015
  * Site: http://www.fater.ru
+ * Dependings: Bootstrap (CSS + JS), JQuery
  * */
 
 
@@ -180,30 +181,6 @@
 				success: function (callback)
 				{
 					$.modalfly ('close_loading');
-					if (callback)
-					{
-						$.modalfly ('show', callback);
-					}
-				},
-				complete: function ()
-				{
-					$.modalfly ('close_loading');
-				}
-			});
-		}
-		else if (action == 'request')
-		{
-			// Отправка данных на сервер, ответ сервера отображается в модальном окне, полученныы JS код выполняется
-
-			$.modalfly ('show_loading');
-			$.ajax ({
-				url: options.url ? options.url : opt.url,
-				type: 'POST',
-				dataType: 'json',
-				data: options.param,
-				success: function (callback)
-				{
-					$.modalfly ('close_loading');
 					if (callback.content)
 					{
 						$.modalfly ('show', callback);
@@ -282,7 +259,7 @@
 				}
 				$ (this).on ('click',function ()
 				{
-					$.modalfly ('request', opt);
+					$.modalfly ('load', opt);
 				});
 			});
 		}
@@ -307,7 +284,6 @@ $ (window).load (function ()
 	$ (document).on ('click', 'button[data-object="modalfly_save"]', function ()
 	{
 		if ($ (this).is (':visible'))
-		//if ($ (this).attr ('data-param').length)
 		{
 			var opt = {param: {}};
 			if ($ (this).attr ('data-param').length)
@@ -315,16 +291,16 @@ $ (window).load (function ()
 				opt.param = $.parseJSON ($ (this).attr ('data-param'));
 			}
 
-			$ ('div[class="modal-body"] [data-object="fld"]').each (function (i, e)
+			$ ('div[class="modal-body"] [data-name]').each (function (i, e)
 			{
-				if ($ (this).attr ('type') == 'checkbox' && !$ (this).is (':checked') || $ (this).attr ('type') == 'radio' && !$ (this).is (':checked'))
+				if
+				(
+						$ (this).attr ('type') == 'checkbox' && !$ (this).is (':checked')
+						|| $ (this).attr ('type') == 'radio' && !$ (this).is (':checked')
+				)
 				{
 					return;
 				}
-				opt.param[$ (this).attr ('data-name')] = $ (this).val ();
-			});
-			$ ('div[class="modal-body"] [data-object="fld_check"]').each (function (i, e)
-			{
 				opt.param[$ (this).attr ('data-name')] = $ (this).val ();
 			});
 
@@ -333,7 +309,7 @@ $ (window).load (function ()
 				opt.url = opt.param.url;
 				delete opt.param.url;
 			}
-			$.modalfly ('request', opt);
+			$.modalfly ('load', opt);
 		}
 	});
 });

@@ -10,7 +10,7 @@ if ($_POST['action'] == 'get_form')
 	$json['content'] = '
 <div class="row">
 	<div class="col-sm-7">
-		<input type="text" data-trigger="enter" data-name="field1" data-object="fld" value="" autofocus class="form-control" />
+		<input type="text" data-trigger="enter" data-name="text_field" value="" autofocus class="form-control" />
 	</div>
 	<div class="col-sm-5">
 		Укажите первое значение
@@ -19,10 +19,14 @@ if ($_POST['action'] == 'get_form')
 <br />
 <div class="row">
 	<div class="col-sm-7">
-		<input type="checkbox" data-trigger="enter" data-name="field2" data-object="fld" value="checked1" />
+		<input type="checkbox" data-trigger="enter" data-name="option" value="option_value" /> Option <br />
+		<input type="radio" name="name1" data-name="radio_option" value="1" /> 1
+		<input type="radio" name="name1" data-name="radio_option" value="2" /> 2
+		<input type="radio" name="name1" data-name="radio_option" value="3" /> 3
+		<input type="radio" name="name1" data-name="radio_option" value="4" /> 4
 	</div>
 	<div class="col-sm-5">
-		Отметить параметр
+		Отметить параметры
 	</div>
 </div>
 <p>От сервера были полученны данные, их дальше можно отправлять на сервер</p>
@@ -39,8 +43,7 @@ if ($_POST['action'] == 'get_form')
 	);
 
 	// Отображается кнопка Закрыть и меняем заголовок
-//	$json['button_close'] = 'Custom close title';
-	$json['button_close'] = true;
+	$json['button_close'] = 'Custom close title';
 }
 elseif ($_POST['action'] == 'add_category')
 {
@@ -48,16 +51,11 @@ elseif ($_POST['action'] == 'add_category')
 	$json['title'] = 'Указанные вами данные';
 
 	// Выводим содержимое формы
-	$json['content'] = 'Сервер получил следующие данные: Первое значение "'.$_POST['field1'].'"';
-	if (isset ($_POST['field2']))
-	{
-		$json['content'] .= ', а так же параметр "'.$_POST['field2'].'"';
-	}
+	$json['content'] = 'Сервер получил следующие данные:<br /><pre>'.print_r ($_POST, true).'</pre>';
+	// Изменяем название кнопки Закрыть и отображаем ее
+	$json['button_close'] = 'ОК!';
+	$json['size_small'] = true;
 
-	// Отображается кнопка Закрыть
-	$json['button_close'] = true;
-	// Изменяем название кнопки Закрыть
-	$json['button_close_text'] = 'ОК!';
 }
 
 echo json_encode ($json);
