@@ -57,5 +57,10 @@ elseif ($_POST['action'] == 'add_category')
 	$json['size_small'] = true;
 
 }
+elseif ($_POST['action'] == 'func_close')
+{
+	$json['close'] = true;
+	$json['jsa'] = 'alert ("JS команда с сервера, после закрытия окна");';
+}
 
 echo json_encode ($json);

@@ -1,9 +1,9 @@
 /*
  * Module: JQuery ModalFly Plugin
- * Version: 2.4.1
+ * Version: 2.4.2
  * Author: Chaikin Evgenii
  * Release date: 26 Feb 2015
- * Updated: 23 Oct 2015
+ * Updated: 26 Oct 2015
  * Site: http://www.fater.ru
  * Dependings: Bootstrap (CSS + JS), JQuery
  * */
@@ -193,6 +193,10 @@
 					{
 						opt.jsa = callback.jsa;
 					}
+					if (callback.close)
+					{
+						$.modalfly ('close');
+					}
 				},
 				complete: function ()
 				{
@@ -263,10 +267,15 @@
 				});
 			});
 		}
+		else if (action == 'close')
+		{
+			// Скрытие формы средствами Bootstrap
+			$ ('#' + opt.object_name_form).modal ('hide');
+		}
 	};
 
-	// Выполнить загруженный JS код при закрытии окна
-	$ (document).on ('hide.bs.modal','#' + opt.object_name_form, function ()
+	// Выполнить загруженный JS код после закрытия окна
+	$ (document).on ('hidden.bs.modal','#' + opt.object_name_form, function ()
 	{
 		if (opt.jsa != '')
 		{
