@@ -1,6 +1,6 @@
 /*
  * Module: JQuery ModalFly Plugin
- * Version: 2.4.0
+ * Version: 2.4.1
  * Author: Chaikin Evgenii
  * Release date: 26 Feb 2015
  * Updated: 23 Oct 2015

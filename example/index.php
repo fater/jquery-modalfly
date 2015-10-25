@@ -4,7 +4,7 @@ $json = [];
 if ($_POST['action'] == 'get_form')
 {
 	// Выводим заголовок формы
-	$json['title'] = 'Form title';
+	$json['title'] = 'Форма 1';
 
 	// Выводим содержимое формы
 	$json['content'] = '
