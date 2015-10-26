@@ -62,37 +62,37 @@
 			if (options.button_close)
 			{
 				$ ('#' + opt.object_name_form + ' button[data-object="module_modalfly_close_button"]')
-						.html (typeof options.button_close == 'string' ? options.button_close : opt.lang_close)
-						.show (0);
+					.html (typeof options.button_close == 'string' ? options.button_close : opt.lang_close)
+					.show (0);
 			}
 			else
 			{
 				$ ('#' + opt.object_name_form + ' button[data-object="module_modalfly_close_button"]')
-						.hide (0);
+					.hide (0);
 			}
 
 			// Определяем новый широкий стиль для модального окна
 			if (options.size_wide)
 			{
 				$ ('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]')
-						.addClass ('modal-lg');
+					.addClass ('modal-lg');
 			}
 			else if ($ ('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]').hasClass ('modal-lg'))
 			{
 				$ ('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]')
-						.removeClass ('modal-lg');
+					.removeClass ('modal-lg');
 			}
 
 			// Определяем новый узкий стиль для модального окна
 			if (options.size_small)
 			{
 				$ ('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]')
-						.addClass ('modal-sm');
+					.addClass ('modal-sm');
 			}
 			else if ($ ('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]').hasClass ('modal-sm'))
 			{
 				$ ('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]')
-						.removeClass ('modal-sm');
+					.removeClass ('modal-sm');
 			}
 
 			// Отображение кнопок
@@ -103,27 +103,27 @@
 				if (options.button_color)
 				{
 					$ ('#' + opt.object_name_form + ' [data-object="modalfly_save"]')
-							.removeClass ('btn-primary')
-							.addClass (options.button_color);
+						.removeClass ('btn-primary')
+						.addClass (options.button_color);
 				}
 				else
 				{
 					$ ('#' + opt.object_name_form + ' [data-object="modalfly_save"]')
-							.removeClass ()
-							.addClass ('btn btn-primary');
+						.removeClass ()
+						.addClass ('btn btn-primary');
 				}
 
 				// Показываем кнопку
 				if (options.button_save)
 				{
 					$ ('#' + opt.object_name_form + ' [data-object="modalfly_save"]')
-							.html (typeof options.button_save == 'string' ? options.button_save : opt.lang_save)
-							.show ();
+						.html (typeof options.button_save == 'string' ? options.button_save : opt.lang_save)
+						.show ();
 				}
 				else
 				{
 					$ ('#' + opt.object_name_form + ' [data-object="modalfly_save"]')
-							.hide ();
+						.hide ();
 				}
 
 				// Накладываем на кнопку параметры
@@ -134,12 +134,12 @@
 						options.param = JSON.stringify (options.param);
 					}
 					$ ('#' + opt.object_name_form + ' [data-object="modalfly_save"]')
-							.attr ('data-param', options.param);
+						.attr ('data-param', options.param);
 				}
 				else
 				{
 					$ ('#' + opt.object_name_form + ' [data-object="modalfly_save"]')
-							.attr ('data-param', '');
+						.attr ('data-param', '');
 				}
 			}
 			else
@@ -214,15 +214,15 @@
 				$ ('body').prepend ('<div id="' + opt.object_name_loading + '"></div>');
 			}
 			$ ('#' + opt.object_name_loading)
-					.css ({marginTop: '-10px'})
-					.animate ({opacity: 'show', marginTop: 0}, 'fast');
+				.css ({marginTop: '-10px'})
+				.animate ({opacity: 'show', marginTop: 0}, 'fast');
 		}
 		else if (action == 'close_loading')
 		{
 			// Скрытие иконки загрузки
 
 			$ ('#' + opt.object_name_loading)
-					.animate ({opacity: 'hide', marginTop: '-10px'}, 'fast');
+				.animate ({opacity: 'hide', marginTop: '-10px'}, 'fast');
 		}
 		else if (action == 'check_actions')
 		{
@@ -304,8 +304,8 @@ $ (window).load (function ()
 			{
 				if
 				(
-						$ (this).attr ('type') == 'checkbox' && !$ (this).is (':checked')
-						|| $ (this).attr ('type') == 'radio' && !$ (this).is (':checked')
+					$ (this).attr ('type') == 'checkbox' && !$ (this).is (':checked')
+					|| $ (this).attr ('type') == 'radio' && !$ (this).is (':checked')
 				)
 				{
 					return;

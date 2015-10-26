@@ -1,7 +1,7 @@
 var gulp = require ('gulp'),
-		uglify = require ('gulp-uglify'),
-		rename = require ('gulp-rename'),
-		cssmin = require ('gulp-cssmin');
+	uglify = require ('gulp-uglify'),
+	rename = require ('gulp-rename'),
+	cssmin = require ('gulp-cssmin');
 
 gulp.task ('compress', function ()
 {
@@ -11,7 +11,7 @@ gulp.task ('compress', function ()
 		.pipe (gulp.dest ('dist/'));
 
 	gulp.src ('src/*.css')
-			.pipe (cssmin ())
-			.pipe (rename ({suffix: '.min'}))
-			.pipe (gulp.dest ('dist/'));
+		.pipe (cssmin ())
+		.pipe (rename ({suffix: '.min'}))
+		.pipe (gulp.dest ('dist/'));
 });
