@@ -5,7 +5,7 @@
  * Release date: 26 Feb 2015
  * Updated: 26 Oct 2015
  * Site: http://www.fater.ru
- * Dependings: Bootstrap (CSS + JS), JQuery
+ * Dependence: Bootstrap (CSS + JS), JQuery
  * */
 
 

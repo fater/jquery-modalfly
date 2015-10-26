@@ -1,6 +1,6 @@
 #Modal Fly jQuery plugin
 
-Версия: **2.4.2**
+Версия: **2.4.3**
 
 ###Как это работает?
 * Модуль может отображать модальное окно с заданным содержимым; 
@@ -25,9 +25,9 @@
 Подключите файлы в HTML проект:
 ```html
 // Modalfly плагин
-<script src="url-to-module/jquery-modalfly/jquery.modalfly.js"></script>
+<script src="url-to-module/jquery-modalfly/dist/jquery.modalfly.min.js"></script>
 // Стили
-<link rel="stylesheet" href="url-to-module/jquery-modalfly/jquery.modalfly.css">
+<link rel="stylesheet" href="url-to-module/jquery-modalfly/dist/jquery.modalfly.min.css">
 
 // JQuery
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
