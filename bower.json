@@ -4,7 +4,7 @@
   "authors": [
 		"'Chaikin Evgenii <'fat_hack@rambler.ru'>"
   ],
-	"description": "JQuery Modalfly Plugin",
+	"description": "jQuery Modalfly Plugin",
   "main": "jquery.modalfly.js",
   "moduleType": [],
   "keywords": [

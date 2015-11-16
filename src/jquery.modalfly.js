@@ -1,9 +1,9 @@
 /*
- * Module: JQuery ModalFly Plugin
- * Version: 2.4.3
+ * Module: jQuery ModalFly Plugin
+ * Version: 2.4.4
  * Author: Chaikin Evgenii
  * Release date: 26 Feb 2015
- * Updated: 26 Oct 2015
+ * Updated: 16 Nov 2015
  * Site: http://www.fater.ru
  * Dependence: Bootstrap (CSS + JS), JQuery
  * */
@@ -23,7 +23,8 @@
 		// Default values
 		url: 'api/',
 		lang_close: 'Закрыть',
-		lang_save: 'Сохранить'
+		lang_save: 'Сохранить',
+		animate: true
 	};
 
 	$.modalfly = function (action, options)
@@ -31,7 +32,6 @@
 		if (action == 'options')
 		{
 			// Set default values
-
 			$.extend (opt, options);
 		}
 		else if (action == 'show')
@@ -43,36 +43,36 @@
 			{
 				opt.template_loaded = true;
 
-				$ ('body').prepend ('<div class="modal fade" id="' + opt.object_name_form + '"><div data-object="modalfly_dialog" class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title"></h4></div><div class="modal-body"></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal" data-object="module_modalfly_close_button" autofocus>' + opt.lang_close + '</button><button type="button" class="btn btn-primary" data-object="modalfly_save" data-param="" autofocus>' + opt.lang_save + '</button></div></div></div></div>');
+				$ ('body').prepend ('<div class="modal' + (opt.animate == true ? ' fade' : '') + '" id="' + opt.object_name_form + '"><div data-object="modalfly_dialog" class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title"></h4></div><div class="modal-body"></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal" data-object="module_modalfly_close_button" autofocus>' + opt.lang_close + '</button><button type="button" class="btn btn-primary" data-object="modalfly_save" data-param="" autofocus>' + opt.lang_save + '</button></div></div></div></div>');
 			}
 
-			if (typeof options == 'string')
+			if(typeof options == 'string')
 			{
 				options = {content: options};
 			}
-			else if (!options.title)
+			else if(!options.title)
 			{
 				options.title = '';
 			}
 
-			$ ('#' + opt.object_name_form + ' h4[class=modal-title]').html (options.title);
-			$ ('#' + opt.object_name_form + ' div[class=modal-body]').html (options.content);
+			$('#' + opt.object_name_form + ' h4[class=modal-title]').html(options.title);
+			$('#' + opt.object_name_form + ' div[class=modal-body]').html(options.content);
 
 			// Задается отображение кнопки закрыть и текста на ней
-			if (options.button_close)
+			if(options.button_close)
 			{
-				$ ('#' + opt.object_name_form + ' button[data-object="module_modalfly_close_button"]')
-					.html (typeof options.button_close == 'string' ? options.button_close : opt.lang_close)
-					.show (0);
+				$('#' + opt.object_name_form + ' button[data-object="module_modalfly_close_button"]')
+					.html(typeof options.button_close == 'string' ? options.button_close : opt.lang_close)
+					.show(0);
 			}
 			else
 			{
-				$ ('#' + opt.object_name_form + ' button[data-object="module_modalfly_close_button"]')
-					.hide (0);
+				$('#' + opt.object_name_form + ' button[data-object="module_modalfly_close_button"]')
+					.hide(0);
 			}
 
 			// Определяем новый широкий стиль для модального окна
-			if (options.size_wide)
+			if(options.size_wide)
 			{
 				$ ('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]')
 					.addClass ('modal-lg');
@@ -155,18 +155,20 @@
 				}
 			}
 			// Находим атрибут "autofocus" в полях формы и ставим на него курсор
-			$ ('#' + opt.object_name_form).on ('show.bs.modal', function ()
-			{
-				$ (this).find ("[autofocus]:first").focus ();
-			}).on ('shown.bs.modal', function ()
-			{
-				$ (this).find ("[autofocus]:first").focus ();
-			});
+			$('#' + opt.object_name_form)
+				.on('show.bs.modal', function()
+				{
+					$(this).find("[autofocus]:first").focus();
+				})
+				.on('shown.bs.modal', function()
+				{
+					$(this).find("[autofocus]:first").focus();
+				});
 
 			// Отображение формы средствами Bootstrap
-			$ ('#' + opt.object_name_form).modal ('show');
+			$ ('#' + opt.object_name_form).modal('show');
 			// После ответа от сервера парсим полученные значения
-			$.modalfly ('check_actions', 'modal_load');
+			$.modalfly('check_actions', 'modal_load');
 		}
 		else if (action == 'load')
 		{

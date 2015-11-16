@@ -1,6 +1,6 @@
-#Modal Fly jQuery plugin
+#Modal Fly jQuery Plugin
 
-Версия: **2.4.3**
+Версия: **2.4.4**
 
 ###Как это работает?
 * Модуль может отображать модальное окно с заданным содержимым; 
@@ -20,16 +20,16 @@
 `bower install jquery-modalfly --save` - происходит установка компонента. В текущем пакете есть зависимости bootstrap и jquery. Если они не были установлены через bower, они установятся вместе с плагином modalfly. 
 
 
-###Как использовать модуль
+###Как подключить модуль
 
 Подключите файлы в HTML проект:
 ```html
-// Modalfly плагин
+// Modalfly Plugin
 <script src="url-to-module/jquery-modalfly/dist/jquery.modalfly.min.js"></script>
-// Стили
+// Modalfly Styles
 <link rel="stylesheet" href="url-to-module/jquery-modalfly/dist/jquery.modalfly.min.css">
 
-// JQuery
+// jQuery
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 // Bootstrap CSS Framework
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -200,3 +200,13 @@ echo json_encode ($json);
 * **data-trigger="enter"** - Если такой атрибут указан у вас в теге `input` и если у вас стоит на этом поле курсор, при нажатии на клавишу Enter, форма отправит данные на сервер. Она дублирует функцию нажатия кнопки Сохранить.
 * **data-name="[field1]"** - Указав такой атрибут, вы зададите имя для отправляемого параметра на сервер. Такой атрибут можно задавать для всех элементов форм. Если такого атрибута не будет в поле формы, то данные с этого поля не будут отправляться на сервер.
 * **autofocus** - Добавление такого атрибута в тег `input` является автофокусом.
+
+
+###Changelist
+
+#####v 2.4.4
+- Added a new property `animate` to `options`. Animate parameter allows animate form on load. Defaults `animate` = true, to disable animation you need to set options:
+```js
+$.modalfly('options', {animate: false});
+```
+- Renamed example files.
