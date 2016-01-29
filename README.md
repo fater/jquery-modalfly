@@ -204,6 +204,9 @@ echo json_encode ($json);
 
 ###Changelist
 
+#####v 2.4.5
+- Code refactoring
+
 #####v 2.4.4
 - Added a new property `animate` to `options`. Animate parameter allows animate form on load. Defaults `animate` = true, to disable animation you need to set options:
 ```js
