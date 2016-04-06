@@ -1,6 +1,6 @@
 #Modal Fly jQuery Plugin
 
-Версия: **2.4.5**
+Версия: **2.5.0**
 
 ###Как это работает?
 * Модуль может отображать модальное окно с заданным содержимым; 
@@ -203,6 +203,9 @@ echo json_encode($json);
 
 
 ###Changelist
+
+#####v 2.5.0
+- Added sending multiple field array date (as `field[]`) 
 
 #####v 2.4.5
 - Code refactoring

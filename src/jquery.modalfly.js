@@ -1,9 +1,9 @@
 /*
  * Module: jQuery ModalFly Plugin
- * Version: 2.4.5
+ * Version: 2.5.0
  * Author: Chaikin Evgenii
  * Release date: 26 Feb 2015
- * Updated: 29 Jan 2016
+ * Updated: 06 Apr 2016
  * Site: http://www.fater.ru
  * Dependence: Bootstrap (CSS + JS), JQuery
  * */
@@ -257,7 +257,17 @@ $(window).load(function () {
                 ) {
                     return;
                 }
-                opt.param[$(this).attr('data-name')] = $(this).val();
+                var name = $(this).attr('data-name');
+                var value = $(this).val();
+                if (name.indexOf('[]') != -1) {
+                    if (opt.param[name] && opt.param[name].length > 0) {
+                        opt.param[name].push(value);
+                    } else {
+                        opt.param[name] = [value];
+                    }
+                } else {
+                    opt.param[name] = value;
+                }
             });
 
             if (opt.param.url) {

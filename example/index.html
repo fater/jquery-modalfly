@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8" />
-	<title>jQuery Modalfly Plugin Examples</title>
-	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-	<script src="../src/jquery.modalfly.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<script src="example.js"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="../src/jquery.modalfly.css" />
+    <meta charset="UTF-8" />
+    <title>jQuery Modalfly Plugin Examples</title>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="../src/jquery.modalfly.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="example.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../src/jquery.modalfly.css" />
 </head>
 <body>
 
 <script>
-	$.modalfly ('options', {url: 'request.php', lang_close: 'Close', lang_save: 'Save'});
+    $.modalfly('options', {url: 'request.php', lang_close: 'Close', lang_save: 'Save'});
 </script>
 
 <div class="container">
-	<h3>Пример 1</h3>
-	<div class="row">
-		<div class="col-md-2">
-			<a href="javascript:;" data-action="modalfly_example" class="btn btn-primary">Выполнить код</a>
-		</div>
-		<div class="col-md-10">
-			Показать модальное окно, задав параметры через функцию.
-		</div>
-	</div>
+    <h3>Пример 1</h3>
+    <div class="row">
+        <div class="col-md-2">
+            <a href="javascript:;" data-action="modalfly_example" class="btn btn-primary">Выполнить код</a>
+        </div>
+        <div class="col-md-10">
+            Показать модальное окно, задав параметры через функцию.
+        </div>
+    </div>
 
-
-	<h3>Пример 2</h3>
-	<div class="row">
-		<div class="col-md-2">
-			<a href="javascript:;" data-module="modalfly" data-action="get_form" data-param="value" data-id="7" class="btn btn-primary">Выполнить код</a>
-		</div>
-		<div class="col-md-10">
-			При нажатии на ссылку модуль обращается к серверу с заданными параметрами и возвращает ответ.
-		</div>
-	</div>
+    <h3>Пример 2</h3>
+    <div class="row">
+        <div class="col-md-2">
+            <a href="javascript:;" data-module="modalfly" data-action="get_form" data-param="value" data-id="7" class="btn btn-primary">Выполнить
+                код</a>
+        </div>
+        <div class="col-md-10">
+            При нажатии на ссылку модуль обращается к серверу с заданными параметрами и возвращает ответ.
+        </div>
+    </div>
 
 </div>
 

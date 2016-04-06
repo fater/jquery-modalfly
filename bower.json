@@ -2,13 +2,13 @@
   "name": "jquery-modalfly",
   "homepage": "https://github.com/fater/jquery-modalfly",
   "authors": [
-		"'Chaikin Evgenii <'fat_hack@rambler.ru'>"
+    "'Chaikin Evgenii <'fat_hack@rambler.ru'>"
   ],
-	"description": "jQuery Modalfly Plugin",
+  "description": "jQuery Modalfly Plugin",
   "main": "jquery.modalfly.js",
   "moduleType": [],
   "keywords": [
-		"modalfly"
+    "modalfly"
   ],
   "license": "CC",
   "ignore": [
@@ -18,7 +18,7 @@
     "test",
     "tests"
   ],
-	"dependencies": {
+  "dependencies": {
     "jquery": "~2.1.4",
     "bootstrap": "~3.3.5"
   }
