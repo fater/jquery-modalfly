@@ -30,8 +30,7 @@
         if (action == 'options') {
             // Set default values
             $.extend(opt, options);
-        }
-        else if (action == 'show') {
+        } else if (action == 'show') {
             // Show form
 
             // First time create an element
@@ -43,8 +42,7 @@
 
             if (typeof options == 'string') {
                 options = {content: options};
-            }
-            else if (!options.title) {
+            } else if (!options.title) {
                 options.title = '';
             }
 
@@ -56,8 +54,7 @@
                 $('#' + opt.object_name_form + ' button[data-object="module_modalfly_close_button"]')
                     .html(typeof options.button_close == 'string' ? options.button_close : opt.lang_close)
                     .show(0);
-            }
-            else {
+            } else {
                 $('#' + opt.object_name_form + ' button[data-object="module_modalfly_close_button"]')
                     .hide(0);
             }
@@ -66,8 +63,7 @@
             if (options.size_wide) {
                 $('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]')
                     .addClass('modal-lg');
-            }
-            else if ($('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]').hasClass('modal-lg')) {
+            } else if ($('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]').hasClass('modal-lg')) {
                 $('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]')
                     .removeClass('modal-lg');
             }
@@ -76,8 +72,7 @@
             if (options.size_small) {
                 $('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]')
                     .addClass('modal-sm');
-            }
-            else if ($('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]').hasClass('modal-sm')) {
+            } else if ($('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]').hasClass('modal-sm')) {
                 $('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]')
                     .removeClass('modal-sm');
             }
@@ -90,8 +85,7 @@
                     $('#' + opt.object_name_form + ' [data-object="modalfly_save"]')
                         .removeClass('btn-primary')
                         .addClass(options.button_color);
-                }
-                else {
+                } else {
                     $('#' + opt.object_name_form + ' [data-object="modalfly_save"]')
                         .removeClass()
                         .addClass('btn btn-primary');
@@ -102,8 +96,7 @@
                     $('#' + opt.object_name_form + ' [data-object="modalfly_save"]')
                         .html(typeof options.button_save == 'string' ? options.button_save : opt.lang_save)
                         .show();
-                }
-                else {
+                } else {
                     $('#' + opt.object_name_form + ' [data-object="modalfly_save"]')
                         .hide();
                 }
@@ -115,18 +108,15 @@
                     }
                     $('#' + opt.object_name_form + ' [data-object="modalfly_save"]')
                         .attr('data-param', options.param);
-                }
-                else {
+                } else {
                     $('#' + opt.object_name_form + ' [data-object="modalfly_save"]')
                         .attr('data-param', '');
                 }
-            }
-            else {
+            } else {
                 // Если отображается только кнопка закрыть, то отображаем панель с одной кнопкой
                 if (options.button_close) {
                     $('#' + opt.object_name_form + '  [data-object="modalfly_save"]').hide(0);
-                }
-                else {
+                } else {
                     $('#' + opt.object_name_form + ' div[class="modal-footer"]').hide(0);
                 }
             }
@@ -143,8 +133,7 @@
             $('#' + opt.object_name_form).modal('show');
             // После ответа от сервера парсим полученные значения
             $.modalfly('check_actions', 'modal_load');
-        }
-        else if (action == 'load') {
+        } else if (action == 'load') {
             // Отправка данных на сервер, ответ сервера отображается в модальном окне
 
             $.modalfly('show_loading');
@@ -172,8 +161,7 @@
                     $.modalfly('close_loading');
                 }
             });
-        }
-        else if (action == 'show_loading') {
+        } else if (action == 'show_loading') {
             // Отображение иконки загрузки
 
             if (!opt.overflow_loading) {
@@ -183,14 +171,12 @@
             $('#' + opt.object_name_loading)
                 .css({marginTop: '-10px'})
                 .animate({opacity: 'show', marginTop: 0}, 'fast');
-        }
-        else if (action == 'close_loading') {
+        } else if (action == 'close_loading') {
             // Скрытие иконки загрузки
 
             $('#' + opt.object_name_loading)
                 .animate({opacity: 'hide', marginTop: '-10px'}, 'fast');
-        }
-        else if (action == 'check_actions') {
+        } else if (action == 'check_actions') {
             // Полученный в форму HTML код проверяется и добавляются триггеры
 
             $('#' + opt.object_name_form + ' [data-trigger="enter"]').on('keypress', function (event) {
@@ -222,8 +208,7 @@
                     $.modalfly('load', opt);
                 });
             });
-        }
-        else if (action == 'close') {
+        } else if (action == 'close') {
             // Скрытие формы средствами Bootstrap
             $('#' + opt.object_name_form).modal('hide');
         }
@@ -250,11 +235,7 @@ $(window).load(function () {
             }
 
             $('div[class="modal-body"] [data-name]').each(function (i, e) {
-                if
-                (
-                    $(this).attr('type') == 'checkbox' && !$(this).is(':checked')
-                    || $(this).attr('type') == 'radio' && !$(this).is(':checked')
-                ) {
+                if ($(this).attr('type') == 'checkbox' && !$(this).is(':checked') || $(this).attr('type') == 'radio' && !$(this).is(':checked')) {
                     return;
                 }
                 var name = $(this).attr('data-name');
