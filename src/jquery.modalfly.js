@@ -214,10 +214,12 @@
         }
     };
 
-    // Выполнить загруженный JS код после закрытия окна
+    // Run JS code after closing modal window / Bootstrap initialisation
     $(document).on('hidden.bs.modal', '#' + opt.object_name_form, function () {
         if (opt.jsa != '') {
+            // Run code if exist
             $.globalEval(opt.jsa);
+            // Clear code
             opt.jsa = '';
         }
     });
@@ -227,6 +229,7 @@
 $(window).load(function () {
     $.modalfly('check_actions');
 
+    // Add a watcher on the save button
     $(document).on('click', 'button[data-object="modalfly_save"]', function () {
         if ($(this).is(':visible')) {
             var opt = {param: {}};
