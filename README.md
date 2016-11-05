@@ -27,14 +27,15 @@ Version: **2.5.0**
 
 Подключите файлы в HTML проект:
 ```html
-// Modalfly Plugin
-<script src="url-to-module/jquery-modalfly/dist/jquery.modalfly.min.js"></script>
-// Modalfly Styles
-<link rel="stylesheet" href="url-to-module/jquery-modalfly/dist/jquery.modalfly.min.css">
+// ModalFly Plugin
+<script src="[url-to-module]/jquery-modalfly/dist/jquery.modalfly.min.js"></script>
+// ModalFly Plugin Styles
+<link rel="stylesheet" href="[url-to-module]/jquery-modalfly/dist/jquery.modalfly.min.css">
 
-// jQuery
+// jQuery Module !Required
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-// Bootstrap CSS Framework
+
+// Bootstrap CSS Framework !Required
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
@@ -42,12 +43,12 @@ Version: **2.5.0**
 ```
 
 
-#Описание параметров
+#Description of the parameters
 ```js
-$.modalfly([первый аргумент функции], [второй аргумент функции]);
+$.modalfly([The first argument], [The second argument]);
 ```
-**Первый аргумент функции**
-Тип входящих данных: текстовый
+###The first argument:  
+Тип входящих данных: текстовый  
 Варианты входящих данных:
 
 * **options** - задаем глобальные настройки плагина. Вторым аргументом функции задаются глобальные настройки: `{url: 'путь к API', lang_save: 'Язык кнопки сохранить', lang_close: 'Язык кнопки закрыть'}`;
