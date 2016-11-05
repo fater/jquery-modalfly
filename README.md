@@ -1,8 +1,10 @@
-#Modal Fly jQuery Plugin
+#ModalFly jQuery Plugin
 
-Версия: **2.5.0**
+Version: **2.5.0**
 
-###Как это работает?
+[ [Русская версия Readme](README-RU.md) ]
+
+###What does the module?
 * Модуль может отображать модальное окно с заданным содержимым; 
 * Модуль может отправлять запросы на сервер с заданными параметрами;
 * Модуль может отправлять запросы на сервер и возвращать их в виде исполняемого JS кода или/и отображать полученные данные от сервера в модальном окне;
@@ -12,15 +14,16 @@
 
 
 
-##Зависимости
-* **Bootstrap CSS Framework** - использует основной вид отображения формы
-* **jQuery** - необходимая библиотека для работы модуля
+##Dependencies
+* **jQuery** 
+* **Bootstrap** CSS Framework
 
-##Установка с помощью Bower
-`bower install jquery-modalfly --save` - происходит установка компонента. В текущем пакете есть зависимости bootstrap и jquery. Если они не были установлены через bower, они установятся вместе с плагином modalfly. 
+##Bower installation
+`bower install jquery-modalfly --save` - Installs the component.
+ Required dependencies will be installed with the current package automatically.
 
 
-###Как подключить модуль
+###How to include the module on your page?
 
 Подключите файлы в HTML проект:
 ```html
@@ -119,8 +122,8 @@ $.modalfly('load', {url: 'http://yoursite.com/api.php', param: opt});
 
 Результатом выполнения данной функции будет отправка указанных параметров на сервер по указанному адресу API.
 
-#Примеры использования с HTML
-###Отправка данных на сервер
+#Examples of the call using only html
+###Sending data to the server
 
 *Пример:*
 На странице мы можем вызывать выполнение плагина, задавая атрибуты HTML объектам.
