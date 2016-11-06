@@ -59,7 +59,7 @@
                     .hide(0);
             }
 
-            // Определяем новый широкий стиль для модального окна
+            // Define wide modal style by default
             if (options.size_wide) {
                 $('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]')
                     .addClass('modal-lg');
@@ -68,7 +68,7 @@
                     .removeClass('modal-lg');
             }
 
-            // Определяем новый узкий стиль для модального окна
+            // Define small size for modal by default
             if (options.size_small) {
                 $('#' + opt.object_name_form + ' div[data-object="modalfly_dialog"]')
                     .addClass('modal-sm');
@@ -77,10 +77,10 @@
                     .removeClass('modal-sm');
             }
 
-            // Отображение кнопок
+            // Show buttons
             if (options.button_save || options.param) {
                 $('#' + opt.object_name_form + ' div[class="modal-footer"]').show(0);
-                // Задаем цвет кнопки, согласно стилям bootstrap
+                // Define color for button using Bootstrap class names
                 if (options.button_color) {
                     $('#' + opt.object_name_form + ' [data-object="modalfly_save"]')
                         .removeClass('btn-primary')
@@ -91,7 +91,7 @@
                         .addClass('btn btn-primary');
                 }
 
-                // Показываем кнопку
+                // SHow button
                 if (options.button_save) {
                     $('#' + opt.object_name_form + ' [data-object="modalfly_save"]')
                         .html(typeof options.button_save == 'string' ? options.button_save : opt.lang_save)
@@ -101,7 +101,7 @@
                         .hide();
                 }
 
-                // Накладываем на кнопку параметры
+                // Add parameters to button
                 if (options.param) {
                     if (typeof options.param == 'object') {
                         options.param = JSON.stringify(options.param);
@@ -113,14 +113,14 @@
                         .attr('data-param', '');
                 }
             } else {
-                // Если отображается только кнопка закрыть, то отображаем панель с одной кнопкой
+                // Show one button when only close button
                 if (options.button_close) {
                     $('#' + opt.object_name_form + '  [data-object="modalfly_save"]').hide(0);
                 } else {
                     $('#' + opt.object_name_form + ' div[class="modal-footer"]').hide(0);
                 }
             }
-            // Находим атрибут "autofocus" в полях формы и ставим на него курсор
+            // Finds "autofocus" attribute and insert cursor into
             $('#' + opt.object_name_form)
                 .on('show.bs.modal', function () {
                     $(this).find("[autofocus]:first").focus();
@@ -129,9 +129,9 @@
                     $(this).find("[autofocus]:first").focus();
                 });
 
-            // Отображение формы средствами Bootstrap
+            // Shows form using Bootstrap engine
             $('#' + opt.object_name_form).modal('show');
-            // После ответа от сервера парсим полученные значения
+            // After server response parse parameters
             $.modalfly('check_actions', 'modal_load');
         } else if (action == 'load') {
             // Отправка данных на сервер, ответ сервера отображается в модальном окне
