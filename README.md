@@ -107,9 +107,11 @@ $.modalfly('show', {title: 'Some title', content: 'Some text'});
 *Пример:*
 Нам необходимо отправить следующие параметры на сервер без callback:
 
-	id = 74; 
-	action = 'get_form';  
-	param = 'user_info'; 
+```js
+id = 74; 
+action = 'get_form';  
+param = 'user_info'; 
+```
 
 Для этого используется первый аргумент функции "load"
 
