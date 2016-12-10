@@ -1,6 +1,6 @@
 #ModalFly jQuery Plugin
 
-Версия: **2.5.0**
+Версия: **2.6.0**
 
 ###Как это работает?
 * Модуль может отображать модальное окно с заданным содержимым; 
@@ -203,6 +203,10 @@ echo json_encode($json);
 
 
 ###Changelist
+
+#####v 2.6.0
+- Добавлен возвращаемый метод `.assign_element`, который содержит массив данных в DOM страницы. Элементы и их значения указываются в массиве.  
+Пример: `.assign_element = ['#elementId' => 'Some content']`. Данная операция произведет вставку значения `'Some content'` в DOM элемент `'#elementId'`.
 
 #####v 2.5.0
 - Added sending multiple field array date (as `field[]`) 

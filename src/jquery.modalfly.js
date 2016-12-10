@@ -1,9 +1,9 @@
 /*
  * Module: jQuery ModalFly Plugin
- * Version: 2.5.0
+ * Version: 2.6.0
  * Author: Chaikin Evgenii
  * Release date: 26 Feb 2015
- * Updated: 06 Apr 2016
+ * Updated: 10 Dec 2016
  * Site: http://www.fater.ru
  * Dependence: Bootstrap (CSS + JS), JQuery
  * */
@@ -120,6 +120,7 @@
                     $('#' + opt.object_name_form + ' div[class="modal-footer"]').hide(0);
                 }
             }
+
             // Finds "autofocus" attribute and insert cursor into
             $('#' + opt.object_name_form)
                 .on('show.bs.modal', function () {
@@ -147,6 +148,13 @@
                     if (callback.content) {
                         $.modalfly('show', callback);
                     }
+                    if (callback.assign_element) {
+                        for (var element in callback.assign_element) {
+                            if (callback.assign_element.hasOwnProperty(element)) {
+                                $(element).html(callback.assign_element[element]);
+                            }
+                        }
+                    }
                     if (callback.js) {
                         $.globalEval(callback.js);
                     }
@@ -162,7 +170,7 @@
                 }
             });
         } else if (action == 'show_loading') {
-            // Отображение иконки загрузки
+            // Show loading icon
 
             if (!opt.overflow_loading) {
                 opt.overflow_loading = true;
@@ -172,7 +180,7 @@
                 .css({marginTop: '-10px'})
                 .animate({opacity: 'show', marginTop: 0}, 'fast');
         } else if (action == 'close_loading') {
-            // Скрытие иконки загрузки
+            // Hide loading icon
 
             $('#' + opt.object_name_loading)
                 .animate({opacity: 'hide', marginTop: '-10px'}, 'fast');
@@ -209,7 +217,7 @@
                 });
             });
         } else if (action == 'close') {
-            // Скрытие формы средствами Bootstrap
+            // Hide form using Bootstrap
             $('#' + opt.object_name_form).modal('hide');
         }
     };
