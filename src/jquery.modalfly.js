@@ -1,9 +1,9 @@
 /*
  * Module: jQuery ModalFly Plugin
- * Version: 2.6.0
+ * Version: 2.7.0
  * Author: Chaikin Evgenii
  * Release date: 26 Feb 2015
- * Updated: 10 Dec 2016
+ * Updated: 11 Dec 2016
  * Site: http://www.fater.ru
  * Dependence: Bootstrap (CSS + JS), JQuery
  * */
@@ -152,6 +152,7 @@
                         for (var element in callback.assign_element) {
                             if (callback.assign_element.hasOwnProperty(element)) {
                                 $(element).html(callback.assign_element[element]);
+                                $.modalfly('check_actions', element);
                             }
                         }
                     }
@@ -196,8 +197,10 @@
             var param = '';
             if (options == 'modal_load') {
                 param = '#' + opt.object_name_form + ' ';
+            } else if (options) {
+                param = options;
             }
-            $(param + '[data-module="modalfly"]').each(function (i, e) {
+            $(param + ' [data-module="modalfly"]').each(function () {
                 var opt = {};
                 opt.param = {};
                 if ($(this).is('[data-action]')) {
@@ -219,6 +222,10 @@
         } else if (action == 'close') {
             // Hide form using Bootstrap
             $('#' + opt.object_name_form).modal('hide');
+        }
+
+        this.checkActions = function (element) {
+            console.log('Run2+');
         }
     };
 
