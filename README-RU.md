@@ -13,7 +13,7 @@
 
 
 ##Зависимости
-* **Bootstrap CSS Framework** - использует основной вид отображения формы
+* **Bootstrap CSS Framework** - используется для отображения формы
 * **jQuery** - необходимая библиотека для работы модуля
 
 ##Установка с помощью Bower
@@ -22,33 +22,32 @@
 
 ###Как подключить модуль
 
-Подключите файлы в HTML проект:
+Вставьте следующий код в тег head, вашего проекта:
 ```html
 // Modalfly Plugin
 <script src="url-to-module/jquery-modalfly/dist/jquery.modalfly.min.js"></script>
 // Modalfly Styles
-<link rel="stylesheet" href="url-to-module/jquery-modalfly/dist/jquery.modalfly.min.css">
+<link rel="stylesheet" href="url-to-module/jquery-modalfly/dist/jquery.modalfly.min.css" />
 
 // jQuery
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 // Bootstrap CSS Framework
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
 ```
 
 
 #Описание параметров
 ```js
-$.modalfly([первый аргумент функции], [второй аргумент функции]);
+$.modalfly([Первый аргумент функции], [Второй аргумент функции]);
 ```
 **Первый аргумент функции**
-Тип входящих данных: текстовый
+Тип: **текстовый**
 Варианты входящих данных:
 
-* **options** - задаем глобальные настройки плагина. Вторым аргументом функции задаются глобальные настройки: `{url: 'путь к API', lang_save: 'Язык кнопки сохранить', lang_close: 'Язык кнопки закрыть'}`;
-* **show** - отображение формы;
+* **options** - задаем глобальные настройки плагина. Второй аргумент задает глобальные настройки: `{url: 'Путь к API', lang_save: 'Заголовок кнопки сохранить', lang_close: 'Заголовок кнопки закрыть'}`;
+* **show** - отображение формы с заданым содержимым;
 * **load** - происходит последовательность действий:
 	* отправка данных на сервер (из вызываемой функции или триггеров - заданных параметров в HTML коде);
 	* сервер может передать HTML код для отображения в форме;

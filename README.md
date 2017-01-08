@@ -25,21 +25,20 @@ Version: **2.7.0**
 
 ###How to include the module on your page?
 
-Подключите файлы в HTML проект:
+Paste the following code to head of your site:
 ```html
 // ModalFly Plugin
 <script src="[url-to-module]/jquery-modalfly/dist/jquery.modalfly.min.js"></script>
 // ModalFly Plugin Styles
-<link rel="stylesheet" href="[url-to-module]/jquery-modalfly/dist/jquery.modalfly.min.css">
+<link rel="stylesheet" href="[url-to-module]/jquery-modalfly/dist/jquery.modalfly.min.css" />
 
-// jQuery Module !Required
+// jQuery Module
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 
-// Bootstrap CSS Framework !Required
+// Bootstrap CSS Framework
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
 ```
 
 
@@ -48,11 +47,11 @@ Version: **2.7.0**
 $.modalfly([The first argument], [The second argument]);
 ```
 ###The first argument:  
-Тип входящих данных: текстовый  
-Варианты входящих данных:
+Type: **text**  
+Data options:
 
-* **options** - задаем глобальные настройки плагина. Вторым аргументом функции задаются глобальные настройки: `{url: 'путь к API', lang_save: 'Язык кнопки сохранить', lang_close: 'Язык кнопки закрыть'}`;
-* **show** - отображение формы;
+* **options** - Set global plugin settings. The second argument to configure global settings: `{url: 'path to API', lang_save: 'The text for the save button', lang_close: 'The text for the cloase button'}`;
+* **show** - Display the form with the specified content;
 * **load** - происходит последовательность действий:
 	* отправка данных на сервер (из вызываемой функции или триггеров - заданных параметров в HTML коде);
 	* сервер может передать HTML код для отображения в форме;
