@@ -5,6 +5,7 @@ Version: **2.7.0**
 [ [Русская версия Readme](README-RU.md) ]
 
 ###What does the module?
+
 * Модуль может отображать модальное окно с заданным содержимым; 
 * Модуль может отправлять запросы на сервер с заданными параметрами;
 * Модуль может отправлять запросы на сервер и возвращать их в виде исполняемого JS кода или/и отображать полученные данные от сервера в модальном окне;
@@ -15,10 +16,12 @@ Version: **2.7.0**
 
 
 ##Dependencies
+
 * **jQuery** 
 * **Bootstrap** CSS Framework
 
 ##Bower installation
+
 `bower install jquery-modalfly --save` - Installs the component.
  Required dependencies will be installed with the current package automatically.
 
@@ -43,20 +46,23 @@ Paste the following code to head of your site:
 
 
 #Description of the parameters
+
 ```js
 $.modalfly([The first argument], [The second argument]);
 ```
+
 ###The first argument:  
+
 Type: **text**  
 Data options:
 
 * **options** - Set global plugin settings. The second argument to configure global settings: `{url: 'path to API', lang_save: 'The text for the save button', lang_close: 'The text for the cloase button'}`;
 * **show** - Display the form with the specified content;
 * **load** - происходит последовательность действий:
-	* отправка данных на сервер (из вызываемой функции или триггеров - заданных параметров в HTML коде);
-	* сервер может передать HTML код для отображения в форме;
-	* сервер может передать дополнительные данные, которые также можно использовать на странице;
-	* сервер может передать JS коды, которые могут выполняться при отображении формы или закрытии формы.
+    * отправка данных на сервер (из вызываемой функции или триггеров - заданных параметров в HTML коде);
+    * сервер может передать HTML код для отображения в форме;
+    * сервер может передать дополнительные данные, которые также можно использовать на странице;
+    * сервер может передать JS коды, которые могут выполняться при отображении формы или закрытии формы.
 * **close** - закрывает форму, второй аргумент функции не нужен.
 
 
@@ -85,7 +91,9 @@ Data options:
 
 
 #Примеры использования с JS
+
 ###Отображение модального окна
+
 *Пример:*
 Если нам необходимо вывести модальное окно с текстом "Some text".
 ```js
@@ -103,6 +111,7 @@ $.modalfly('show', {title: 'Some title', content: 'Some text'});
 
 
 ###Отправка данных на сервер
+
 *Пример:*
 Нам необходимо отправить следующие параметры на сервер без callback:
 
@@ -125,6 +134,7 @@ $.modalfly('load', {url: 'http://yoursite.com/api.php', param: opt});
 Результатом выполнения данной функции будет отправка указанных параметров на сервер по указанному адресу API.
 
 #Examples of the call using only html
+
 ###Sending data to the server
 
 *Пример:*
@@ -158,6 +168,7 @@ $.modalfly('load', {url: 'http://yoursite.com/api.php', param: opt});
 Так же в качестве примера может быть опрос-форма, которая может потребовать нескольких шагов-вопросов и различных вариантов выбора или ответов. Изначально вызвать такую форму можно, как описывалось ранее, нажав на кнопку (в которой мы активизировали атрибуты для плагина Modalfly) - всего 2-3 атрибута. Происходит обращение на сервер, сервер выдает модулю HTML код. И этот ответ может быть уже первым вопросом-формой. Затем, заполнив необходимое количество полей, нажимает на кнопку далее - происходит отправка на сервер заполненной информации. Плюс к тому же к форме можно добавлять необходимое количество JSON данных, для последующей передачи серверу. Затем сервер отображает уже другую форму, и таких итераций может быть сколько угодно. 
 
 ---
+
 ###Получение данных с сервера
 
 Список всех JSON параметров, которые можно отправить с сервера:
@@ -210,19 +221,24 @@ echo json_encode($json);
 ###Changelist
 
 #####v 2.7.0
+
 - Fix: Added triggers for new assign elements created by `.assign_element` option.
 
 #####v 2.6.0
+
 - Mod: Добавлен возвращаемый метод `.assign_element`, который содержит массив данных в DOM страницы. Элементы и их значения указываются в массиве.  
 Пример: `.assign_element = ['#elementId' => 'Some content']`. Данная операция произведет вставку значения `'Some content'` в DOM элемент `'#elementId'`.
 
 #####v 2.5.0
+
 - Added sending multiple field array date (as `field[]`) 
 
 #####v 2.4.5
+
 - Code refactoring
 
 #####v 2.4.4
+
 - Added a new property `animate` to `options`. Animate parameter allows animate form on load. Defaults `animate` = true, to disable animation you need to set options:
 ```js
 $.modalfly('options', {animate: false});
