@@ -6,12 +6,9 @@ Version: **2.7.0**
 
 ### What does the module?
 
-* Модуль может отображать модальное окно с заданным содержимым; 
-* Модуль может отправлять запросы на сервер с заданными параметрами;
-* Модуль может отправлять запросы на сервер и возвращать их в виде исполняемого JS кода или/и отображать полученные данные от сервера в модальном окне;
-* Модуль может активировать события по специальным HTML командам, например отправить параметры на сервер, а полученные от сервера данные отобразить в модальном окне.
-* Модуль не требует написания JS кода, чтобы автоматически отправить данные нужных полей с модального окна. Кроме того к текстовым полям можно добавлять триггер на нажатие клавиши Enter и форма будет отправлена.
-* Отправка на сервер и получение данных в формате JSON.
+* Show the modal window with specified content (Example 1); 
+* Can send requests to the server with specified parameters using JS (Example 2);
+* Can send requests to the server with specified parameters using only HTML attributes (Example 3).
 
 ## Dependencies
 
@@ -20,13 +17,18 @@ Version: **2.7.0**
 
 ## Bower installation
 
-`bower install jquery-modalfly --save` - Installs the component.
+Run this command to install component.
+
+```
+bower install jquery-modalfly --save
+```
+
  Required dependencies will be installed with the current package automatically.
 
 
 ### How to include the module on your page?
 
-Paste the following code to head of your site:
+Paste the following code to the **head** tag of your site:
 ```html
 // ModalFly Plugin
 <script src="[url-to-module]/jquery-modalfly/dist/jquery.modalfly.min.js"></script>
@@ -42,20 +44,41 @@ Paste the following code to head of your site:
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
 ```
 
-
 # Description of the parameters
 
 ```js
-$.modalfly([The first argument], [The second argument]);
+$.modalfly([First argument], [Second argument]);
 ```
 
 ### The first argument:  
 
 Type: **text**  
-Data options:
+Options values:
 
-* **options** - Set global plugin settings. The second argument to configure global settings: `{url: 'path to API', lang_save: 'The text for the save button', lang_close: 'The text for the cloase button'}`;
-* **show** - Display the form with the specified content;
+## options
+
+Set global plugin settings.  
+The 'option' argument configuring global plugin settings.  
+This method 
+Example:
+
+```js
+$.modalfly('options', {
+    url: '/api', // Path to API
+    lang_save: 'Save', // Set save button text
+    lang_close: 'Close' // Set close button text
+});
+```
+
+All arguments for the option:
+
+
+
+
+Option | Description of the parameter
+--- | ---
+**options** | Set global plugin settings.<br />The 'option' argument configuring global plugin settings<br />Example:`$.modalfly('options', {url: 'path to API', lang_save: 'The text for the save button', lang_close: 'The text for the cloase button'}`;
+**show** | Display the form with the specified content;
 * **load** - происходит последовательность действий:
     * отправка данных на сервер (из вызываемой функции или триггеров - заданных параметров в HTML коде);
     * сервер может передать HTML код для отображения в форме;
