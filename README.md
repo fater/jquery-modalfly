@@ -8,7 +8,8 @@ Version: **2.7.0**
 
 * Show the modal window with specified content (Example 1); 
 * Can send requests to the server with specified parameters using JS (Example 2);
-* Can send requests to the server with specified parameters using only HTML attributes (Example 3).
+* Can send requests to the server with specified parameters using only HTML attributes (Example 3);
+* And many other useful features (See examples).
 
 ## Dependencies
 
@@ -50,34 +51,77 @@ Paste the following code to the **head** tag of your site:
 $.modalfly([First argument], [Second argument]);
 ```
 
-### The first argument:  
+## The first argument:
 
 Type: **text**  
 Options values:
 
-## options
+### options
 
 Set global plugin settings.  
-The 'option' argument configuring global plugin settings.  
-This method 
-Example:
+The `option` argument configuring global plugin settings.
+
+_Example:_
 
 ```js
 $.modalfly('options', {
-    url: '/api', // Path to API
-    lang_save: 'Save', // Set save button text
-    lang_close: 'Close' // Set close button text
+    url: '/api/custom', // Set custom path to API
+    lang_save: 'Save me', // Set custom text for the Save button
+    lang_close: 'Close me' // Set custom text for the Close button
 });
 ```
 
-All arguments for the option:
+**All parameters for the option:**
+
+Parameter | Description | Default value
+--- | --- | ---
+**url** | Set API Url | `/api`
+**lang_save** | Set title for the _Save_ button | `Save`
+**lang_close** | Set title for the _Close_ button | `Close`
+**animate** | Animate the window when it is loaded | `true`
+**size** | Set the size (width) of the modal window | `mid`
+**jsa** | Abbreviation 'JS After'. Run the JS code after closing modal window | `''`
+**object_name_loading** | Set the unique item ID for loading form | `module_modalfly_loading`
+**object_name_form** | Set the unique item ID for modal window | `module_modalfly_form`
+
+
+### show
+
+Show modal window.  
+The second argument can have types:
+
+* `string` - Sets the text for modal window;
+* `object` - Sets the options for displaying modal window.
+
+_Example:_
+
+```js
+$.modalfly('show', 'Modal window content');
+```
+
+This example will display a modal window with the specified text.
+
+**All parameters for the option object:**
+
+Parameter | Description | Default value
+--- | --- | ---
+**title** | Set modal window title | `''`
+**content** | Set modal window content | `''`
+**button_close** | Set button close visibility or text.<br /> Set custom text to rename buttom for current session and show button. Set `true` value to show the button with default button text. | `''`
+**button_save** | Set button save visibility or text.<br /> Set custom text to rename buttom for current session and show button. Set `true` value to show the button with default button text. | `''`
+**size** | Allows you to set the size (width) of the modal window | `'mid'`
+
+
+
+**animate** | Animate the window when it is loaded | `true`
+**jsa** | Abbreviation 'JS After'. Run the JS code after closing modal window | `''`
+**object_name_loading** | Set the unique item ID for loading form | `module_modalfly_loading`
+**object_name_form** | Set the unique item ID for modal window | `module_modalfly_form`
 
 
 
 
-Option | Description of the parameter
---- | ---
-**options** | Set global plugin settings.<br />The 'option' argument configuring global plugin settings<br />Example:`$.modalfly('options', {url: 'path to API', lang_save: 'The text for the save button', lang_close: 'The text for the cloase button'}`;
+
 **show** | Display the form with the specified content;
 * **load** - происходит последовательность действий:
     * отправка данных на сервер (из вызываемой функции или триггеров - заданных параметров в HTML коде);
